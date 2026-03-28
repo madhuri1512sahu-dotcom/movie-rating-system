@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Times New Roman', Times, serif;
+        background: url("static/movie.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 100vh;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 20px;
+        background: #110eb800;
+    }
+
+    .login-box {
+        width: 350px;
+        margin: 100px auto;
+        color: white;
+        padding: 25px;
+        border-radius: 10px;
+        background: #0821261c;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .login-box:hover {
+        transform: translateY(-10px);
+        filter: brightness(1.2);
+        border-color: rgba(0, 255, 255, 0.4);
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+    }
+
+    h3{
+        justify-content: center;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px;
+        background: #20b2aa;
+        color: white;
+        border: none;
+        font-size: 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 11vw;
+        margin-top: 2vw;
+        width: 100px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 0 15px rgba(32, 178, 170, 0.5);
+    }
+
+    button.cyan {
+        background: #008b8b;
+    }
+</style>
+
+<body>
+    <div class="overlay">
+        <div style="color: white;" class="navbar">
+            <h2>Admin Login</h2>
+            <a href="/login" style="color:white;">User Login</a>
+        </div>
+
+        <div class="login-box">
+
+            <h3>Admin Login</h3>
+
+            <form method="POST" action="/admin_login">
+
+                <label>Name</label>
+                <input type="name" name="name" required>
+
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>
