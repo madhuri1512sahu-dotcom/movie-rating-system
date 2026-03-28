@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{movie.movieName}}</title>
+</head>
+
+<body style="background:black; color:white; text-align:center;">
+
+    <!-- ✅ Only Title -->
+    <h2>{{movie.movieName}}</h2>
+
+    <br><br>
+
+    <!-- 🎬 Trailer Auto Play -->
+    <iframe width="700" height="400"
+        src="{{movie.youtubeUrl}}?autoplay=1&mute=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+    </iframe>
+
+    <br><br>
+
+    <!-- ▶ Full Movie Button (force new tab) -->
+    <button onclick="openMovie()" 
+        style="padding:10px 20px; background:#e50914; color:white; border:none; border-radius:5px; cursor:pointer;">
+        ▶ Watch Full Movie
+    </button>
+
+    <script>
+        function openMovie() {
+            window.open("{{movie.fullMovieLink}}", "_blank");
+        }
+    </script>
+
+</body>
+
+</html>
