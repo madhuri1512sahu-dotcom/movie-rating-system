@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Times New Roman', Times, serif;
+        background: url("static/movie.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-box {
+        background: #0821261c;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 10px;
+        width: 350px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
+    }
+
+    .login-box:hover {
+        transform: translateY(-10px);
+        filter: brightness(1.2);
+        border-color: rgba(0, 255, 255, 0.4);
+    }
+
+    .login-box h2 {
+        text-align: center;
+        font-size: 30px;
+        margin-top:15px;
+        color:white;
+    }
+
+    .login-box label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #f8fdf9;
+    }
+
+    .login-box input[type="email"],
+    .login-box input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .login-box input:focus {
+        border-color: #00aaff;
+    }
+
+
+    .login-box input[type="submit"] {
+        font-family: 'Times New Roman', Times, serif;
+        width: 100px;
+        padding: 10px;
+        background: #20b2aa;
+        color: white;
+        border: none;
+        font-size: 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 11vw;
+        margin-top: 2vw;
+        transition: background 0.3s;
+    }
+
+    .login-box input[type="submit"]:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 0 15px rgba(32, 178, 170, 0.5);
+    }
+
+    .login-box input[type="submit"].cyan {
+        background: #008b8b;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <div class="overlay">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form method="POST">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <input type="submit" value="Login">
+            </form>
+            <a href="/register">Create account</a>
+        </div>
+    </div>
+</body>
+
+</html>
