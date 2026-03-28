@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Times New Roman', Times, serif;
+        background: url("static/movie.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 118vh;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 20px;
+        background: #110eb800;
+    }
+
+    .form-box {
+        width: 350px;
+        margin: 100px auto;
+        color: white;
+        margin-top: 2em;
+        padding: 40px;
+        border-radius: 10px;
+        background: #0821261c;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-box:hover {
+        transform: translateY(-10px);
+        filter: brightness(1.2);
+        border-color: rgba(0, 255, 255, 0.4);
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+    }
+
+    button {
+        padding: 10px;
+        background: #20b2aa;
+        color: white;
+        border: none;
+        font-size: 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 11vw;
+        margin-top: 2vw;
+        width: 100px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 0 15px rgba(32, 178, 170, 0.5);
+    }
+
+    button.cyan {
+        background: #008b8b;
+    }
+    a{
+       color:white; 
+    }
+    a:hover{
+        color:blue;
+    }
+
+</style>
+
+<body>
+    <div class="overlay">
+        <div class="navbar">
+            <h2 style="color: white;">Add Movie</h2>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+
+        <div class="form-box">
+
+            <form method="POST" action="/add_movie">
+
+                <label>Movie Name</label>
+                <input type="text" name="movieName" required>
+
+                <label>Genre</label>
+                <input type="text" name="genre" required>
+
+                <label>Release Date</label>
+                <input type="date" name="releaseDate" required>
+
+                <label>Poster URL</label>
+                <input type="text" name="poster" placeholder="Paste Poster Image URL">
+
+                <!-- 🎬 Trailer (iframe me chalega) -->
+                <label>Trailer (YouTube Embed Link)</label>
+                <input type="text" name="youtubeUrl" placeholder="https://www.youtube.com/embed/...">
+
+                <!-- ▶ Full Movie (YouTube pe open hogi) -->
+                <label>Full Movie Link (YouTube)</label>
+                <input type="text" name="fullMovieLink" placeholder="https://www.youtube.com/watch?v=...">
+
+                <button type="submit">Add Movie</button>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
