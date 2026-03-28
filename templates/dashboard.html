@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial;
+        background: url("static/movie.jpg") no-repeat center fixed;
+        background-size: cover;
+        color: white;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 100vh;
+    }
+
+    /* Navbar */
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 20px;
+        background: #110eb800;
+    }
+
+    a {
+        color: white;
+    }
+
+    a:hover {
+        color: blue;
+    }
+
+
+    /* Title */
+
+    .title {
+        text-align: center;
+
+    }
+
+    /* Action cards */
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .card {
+        background: #082126;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+        color: white;
+        padding: 20px;
+        width: 250px;
+        height: 250px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        filter: brightness(1.2);
+        border-color: rgba(0, 255, 255, 0.4);
+    }
+
+    .card.cyan {
+        background: #008b8b;
+    }
+
+    .img1 {
+        width: 185px;
+
+    }
+
+    .img2 {
+        width: 150px;
+        margin-top: 0.15em;
+        margin-left: 2em;
+    }
+
+    .btn {
+        background: #20b2aa;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn.cyan {
+        background: #008b8b;
+    }
+
+    .btn:hover {
+        filter: brightness(1.2);
+        box-shadow: 0 0 15px rgba(32, 178, 170, 0.5);
+    }
+
+    /* Movie list */
+
+    .movies {
+        width: 60%;
+        margin: auto;
+        margin-top: 50px;
+        background: white;
+        color: black;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .movie {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div class="overlay">
+        <div class="navbar">
+
+            <h2>🎬 Movie Rating System</h2>
+
+            <a href="/logout">Logout</a>
+
+        </div>
+
+        <div class="actions">
+
+
+            <div class="card">
+
+                <h3 style="margin-top: 0.20em;">+ Add movie</h3>
+
+                <img class="img1" src="static/cinema icon.png">
+
+                <p class="title">Add new movie to database</p>
+
+                <a href="/admin_login">
+                    <button class="btn">Add Movie</button>
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3 style="margin-top:0.25em;"> ⭐Rate Movie</h3>
+
+                <img class="img2" src="static/rating icon.png">
+
+                <p>Give rating to movies</p>
+
+                <a href="/movies">
+                    <button class="btn">Rate Now</button>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+
+</body>
+
+</html>
