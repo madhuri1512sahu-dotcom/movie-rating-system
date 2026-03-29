@@ -1,12 +1,15 @@
+import os
 from flask import Flask, render_template, request, redirect, session, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"
+# Render par secret key secure rakhne ke liye ye likhein
+app.secret_key = os.environ.get("SECRET_KEY", "your_secret_key")
 
-# ✅ Single MongoDB Connection
-client = MongoClient("mongodb://localhost:27017/")
+# ✅ MongoDB Atlas Connection (Render ke liye update kiya gaya)
+mongo_uri = os.environ.get("MONGO_URI")
+client = MongoClient(mongo_uri)
 db = client["movie_rating_db"]
 
 users = db["users"]
