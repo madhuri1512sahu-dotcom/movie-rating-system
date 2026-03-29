@@ -36,7 +36,7 @@ def register():
             "password": request.form["password"],
             "role": "user"
         }
-        db.users.insert_one(user)
+        users.insert_one(user)
         return redirect(url_for('login'))
     return render_template("register.html")
 
@@ -124,7 +124,7 @@ def delete_movie(id):
     if session.get("role") != "admin":
         return redirect(url_for('dashboard'))
 
-   db.movies.delete_one({"_id": ObjectId(id)})
+   movies.delete_one({"_id": ObjectId(id)})
     ratings.delete_many({"movie_id": id})
 
     return redirect(url_for('movies_page'))
