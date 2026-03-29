@@ -107,7 +107,7 @@ def add_movie():
         return redirect(url_for('dashboard'))
 
     if request.method == "POST":
-        db.movies.insert_one({
+        movies.insert_one({
             "movieName": request.form["movieName"],
             "genre": request.form["genre"],
             "releaseDate": request.form["releaseDate"],
