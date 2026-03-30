@@ -124,13 +124,21 @@ def movies_page():
 
 @app.route('/rate/<movie_id>', methods=['POST'])
 def rate(movie_id):
-    # ✅ 'ratings' collection use kiya
-    ratings.insert_one({
-        "movie_id": movie_id,
-        "rating": int(request.form['rating'])
-    })
-    return redirect(url_for('movies_page'))
-
+    try:
+        # Check kariye ki form se data aa raha hai ya nahi
+        rating_value = request.form.get('rating')
+        
+        if rating_value:
+            ratings.insert_one({
+                "movie_id": movie_id,
+                "rating": int(rating_value)
+            })
+            return redirect(url_for('movies_page'))
+        else:
+            return "Please select a rating value", 400
+    except Exception as e:
+        print(f"Error: {e}")
+        return f"Database Error: {e}", 500
 @app.route('/watch/<id>')
 def watch_movie(id):
     movie = movies.find_one({"_id": ObjectId(id)})
