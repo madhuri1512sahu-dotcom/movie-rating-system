@@ -169,7 +169,7 @@ def movies_page():
 @app.route('/rate/<movie_id>', methods=['POST'])
 def rate(movie_id):
     db.ratings.insert_one({
-        "movie_id": movie_id,   # ✅ fixed key
+        "movie_id": movie_id,
         "rating": int(request.form['rating'])
     })
     return redirect(url_for('movies_page'))
