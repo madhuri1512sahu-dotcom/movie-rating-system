@@ -140,8 +140,8 @@
 
         <div class="card">
 
-            <a href="/watch/{{movie.movie._id}}">
-                <img src="{{movie.movie.poster or 'https://via.placeholder.com/200'}}">
+            <a href="{{ url_for('watch_movie', id=movie.movie._id) }}">
+                <img src="{{ movie.movie.poster or 'https://via.placeholder.com/200' }}" alt="Poster">
             </a>
 
             <h3>{{movie.movie.movieName}}</h3>
