@@ -102,7 +102,7 @@ def admin_login():
         if request.form["email"] == "admin@gmail.com" and request.form["password"] == "admin123":
             session["user"] = "Admin"
             session["role"] = "admin"
-            return redirect(url_for('dashboard')) 
+            return redirect(url_for('add_movie.html')) 
         else:
             return "Invalid Admin Login"
     return render_template("admin_login.html")
