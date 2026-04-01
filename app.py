@@ -75,16 +75,22 @@ def logout():
 def add_movie():
     if session.get("role") != "admin":
         return redirect(url_for('dashboard'))
+    
     if request.method == "POST":
+        
+        raw_url = request.form.get("youtubeUrl", "")
+        clean_url = raw_url.replace("YouTube Video URL: ", "").strip()
+        
         movies.insert_one({
             "movieName": request.form["movieName"],
             "genre": request.form["genre"],
             "releaseDate": request.form["releaseDate"],
             "poster": request.form["poster"],
-            "youtubeUrl": request.form.get("youtubeUrl"),
+            "youtubeUrl": clean_url,  # ✅ Ab hamesha clean link save hoga
             "fullMovieLink": request.form.get("fullMovieLink")
         })
-        return redirect(url_for('movies_page')) # ✅ Redirect add kiya
+        return redirect(url_for('movies_page')) 
+    
     return render_template("add_movie.html")
 
 @app.route('/delete_movie/<id>')
