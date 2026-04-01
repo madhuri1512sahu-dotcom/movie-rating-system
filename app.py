@@ -109,21 +109,20 @@ def admin_login():
 
 @app.route('/movies')
 def movies_page():
-
-
     search = request.args.get("search")   
 
     if search:
-        movie_list = movies.find({
+        
+        movie_list = list(movies.find({
             "movieName": {"$regex": search, "$options": "i"}
-        })
+        }))
     else:
-        movie_list = movies.find()
+        
+        movie_list = list(movies.find())
 
     movie_data = []
 
     for movie in movie_list:
-
         movie_ratings = list(ratings.find({"movie_id": str(movie["_id"])}))
         total_ratings = len(movie_ratings)
 
@@ -143,7 +142,7 @@ def movies_page():
 @app.route('/rate/<movie_id>', methods=['POST'])
 def rate(movie_id):
     try:
-        # Check kariye ki form se data aa raha hai ya nahi
+        
         rating_value = request.form.get('rating')
         
         if rating_value:
