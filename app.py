@@ -102,24 +102,42 @@ def admin_login():
         if request.form["email"] == "admin@gmail.com" and request.form["password"] == "admin123":
             session["user"] = "Admin"
             session["role"] = "admin"
-            return redirect(url_for('dashboard')) # ✅ Dashboard par bheja
+            return redirect(url_for('dashboard')) 
         else:
             return "Invalid Admin Login"
     return render_template("admin_login.html")
 
 @app.route('/movies')
 def movies_page():
-    movie_list = movies.find()
+
+
+    search = request.args.get("search")   
+
+    if search:
+        movie_list = movies.find({
+            "movieName": {"$regex": search, "$options": "i"}
+        })
+    else:
+        movie_list = movies.find()
+
     movie_data = []
+
     for movie in movie_list:
+
         movie_ratings = list(ratings.find({"movie_id": str(movie["_id"])}))
-        total = len(movie_ratings)
-        avg = sum(int(r["rating"]) for r in movie_ratings) / total if total > 0 else 0
+        total_ratings = len(movie_ratings)
+
+        if movie_ratings:
+            avg_rating = sum(int(r["rating"]) for r in movie_ratings) / total_ratings
+        else:
+            avg_rating = 0
+
         movie_data.append({
             "movie": movie,
-            "avg_rating": round(avg, 1),
-            "total_ratings": total
+            "avg_rating": round(avg_rating, 1),
+            "total_ratings": total_ratings
         })
+
     return render_template("movies.html", movies=movie_data)
 
 @app.route('/rate/<movie_id>', methods=['POST'])
@@ -139,10 +157,27 @@ def rate(movie_id):
     except Exception as e:
         print(f"Error: {e}")
         return f"Database Error: {e}", 500
+        
 @app.route('/watch/<id>')
 def watch_movie(id):
     movie = movies.find_one({"_id": ObjectId(id)})
     return render_template("watch_movie.html", movie=movie)
+
+@app.route('/search_suggestions')
+def search_suggestions():
+
+    query = request.args.get("q")
+
+    if query:
+        results = movies.find({
+            "movieName": {"$regex": query, "$options": "i"}
+        }).limit(5)
+
+        suggestions = [movie["movieName"] for movie in results]
+
+        return {"suggestions": suggestions}
+
+    return {"suggestions": []}
 
 if __name__ == "__main__":
     app.run(debug=True)
